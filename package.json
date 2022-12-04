@@ -2,30 +2,13 @@
   "name": "yapm-cli",
   "version": "1.0.0",
   "description": "CLI for the YAPM Framework",
-  "main": "index.js",
   "scripts": {
-    "build": "npm install -g ."
   },
+  "author": "Christoph Koschel",
+  "license": "MIT",
   "bin": {
     "yapm": "./contract/yapm-cli.c.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Christoph-Koschel/yapm-cli.git"
-  },
-  "keywords": [
-    "yapm",
-    "cli",
-    "framework",
-    "package",
-    "manager"
-  ],
-  "author": "Christoph Koschel",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Christoph-Koschel/yapm-cli/issues"
-  },
-  "homepage": "https://github.com/Christoph-Koschel/yapm-cli#readme",
   "dependencies": {
     "@types/adm-zip": "^0.5.0",
     "@types/node": "^18.11.9",
