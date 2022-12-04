@@ -770,11 +770,9 @@ bundler.define("1.0.1/yapm/5", ["1.0.1/yapm/4", "1.0.1/yapm/0", "1.0.1/yapm/3", 
 	}
 	async function fetchPackageURL(uri, out) {
 	    let cwd = process.cwd();
-	    console.log(uri);
 	    if (fs.existsSync(uri) && fs.statSync(uri).isFile()) {
 	        return fs.readFileSync(uri);
 	    }
-	    console.log(path.join(cwd, uri));
 	    if (fs.existsSync(path.join(cwd, uri)) && fs.statSync(path.join(cwd, uri)).isFile()) {
 	        return fs.readFileSync(path.join(cwd, uri));
 	    }
@@ -889,7 +887,7 @@ bundler.define("1.0.1/yapm/1", ["1.0.1/yapm/0", "1.0.1/yapm/3"], async (__export
 	            {
 	                type: "GITHUB",
 	                name: "github.com",
-	                url: "http://github.com/{{username}}/{{package}}/releases/download/{{version}}/{{package}}-{{e-version}}.yapm.tar"
+	                url: "http://github.com/{{username}}/{{package}}/releases/download/{{version}}/{{package}}-{{version}}.yapm.zip"
 	            }
 	        ]));
 	    }
