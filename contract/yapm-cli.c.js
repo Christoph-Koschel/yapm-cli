@@ -630,7 +630,7 @@ bundler.define("1.0.1/yapm/2", ["1.0.1/yapm/0", "1.0.1/yapm/1"], async (__export
 	    let config = readConfig(cwd);
 	    let zip = new AdmZip();
 	    fs.readdirSync(cwd).forEach(value => {
-	        if (value != "lib" && !value.endsWith(".yapm.tar")) {
+	        if (value != "lib" && !value.endsWith(".yapm.zip")) {
 	            let entry = path.join(cwd, value);
 	            out(`Include: "${entry}"`);
 	            if (fs.statSync(entry).isFile()) {
@@ -642,7 +642,7 @@ bundler.define("1.0.1/yapm/2", ["1.0.1/yapm/0", "1.0.1/yapm/1"], async (__export
 	        }
 	    });
 	    out("Write tarball...");
-	    const outFile = path.join(cwd, config.name + "-" + config.version.replace(/\./gi, "-") + ".yapm.tgz");
+	    const outFile = path.join(cwd, config.name + "-" + config.version + ".yapm.zip");
 	    zip.writeZip(outFile);
 	    out("Package created");
 	    return outFile;
@@ -769,8 +769,14 @@ bundler.define("1.0.1/yapm/5", ["1.0.1/yapm/4", "1.0.1/yapm/0", "1.0.1/yapm/3", 
 	    return [url, packageYapmConfig];
 	}
 	async function fetchPackageURL(uri, out) {
+	    let cwd = process.cwd();
+	    console.log(uri);
 	    if (fs.existsSync(uri) && fs.statSync(uri).isFile()) {
 	        return fs.readFileSync(uri);
+	    }
+	    console.log(path.join(cwd, uri));
+	    if (fs.existsSync(path.join(cwd, uri)) && fs.statSync(path.join(cwd, uri)).isFile()) {
+	        return fs.readFileSync(path.join(cwd, uri));
 	    }
 	    return await fetchURL(uri);
 	}
@@ -815,7 +821,7 @@ bundler.define("1.0.1/yapm/5", ["1.0.1/yapm/4", "1.0.1/yapm/0", "1.0.1/yapm/3", 
 	async function fetchURL(uri) {
 	    return new Promise((resolve, reject) => {
 	        let tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "yapm"));
-	        let tmpFile = path.join(tmpDir, "download.tgz");
+	        let tmpFile = path.join(tmpDir, "download.zip");
 	        let cmd;
 	        if (process.platform == "win32") {
 	            cmd = `Powershell.exe -Command "Invoke-RestMethod -Uri ${uri} -OutFile ${tmpFile}"`;
