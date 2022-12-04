@@ -4,10 +4,10 @@
   "description": "CLI for the YAPM Framework",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && npm instal -g ."
+    "build": "npm install -g ."
   },
   "bin": {
-    "yapm": "./bin/yapm.js"
+    "yapm": "./contract/yapm-cli.c.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/Christoph-Koschel/yapm-cli#readme",
   "dependencies": {
-    "fast-cli": "github:Christoph-Koschel/fast-cli",
-    "yapm": "github:Christoph-Koschel/yapm"
+    "@types/adm-zip": "^0.5.0",
+    "@types/node": "^18.11.9",
+    "adm-zip": "^0.5.9"
   }
 }

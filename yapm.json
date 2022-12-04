@@ -1,0 +1,23 @@
+{
+    "name": "yapm-cli",
+    "author": "Christoph Koschel",
+    "version": "1.0.0",
+    "license": "MIT",
+    "dependencies": [
+        {
+            "name": "yapm",
+            "version": "1.0.1",
+            "resolve": "..\\yapm\\yapm-1-0-1.yapm.tar"
+        },
+        {
+            "name": "fast-cli",
+            "version": "1.0.0",
+            "resolve": "..\\fast-cli\\fast-cli-1-0-0.yapm.tar"
+        },
+        {
+            "name": "code-database",
+            "version": "1.0.0",
+            "resolve": "..\\code-database\\code-database-1-0-0.yapm.tar"
+        }
+    ]
+}
